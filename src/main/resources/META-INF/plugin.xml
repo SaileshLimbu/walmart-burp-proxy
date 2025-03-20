@@ -1,0 +1,47 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.walmart.walmart-auto-proxy-config</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Walmart Burp Proxy Config</name>
+
+    <vendor email="sailesh.limbu@walmart.com" url="https://www.yourcompany.com">Walmart</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>Walmart Burp Plugins</description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+    </extensions>
+
+    <actions>
+        <group id="com.walmart.walmartautoproxyconfig.ProxyActionGroup"
+               text="Walmart Burp Proxy"
+               description="Burp Proxy Configuration Tools"
+               popup="true"
+               icon="AllIcons.General.Web">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+
+            <action id="com.walmart.walmartburpproxy.actions.SetProxyAction"
+                    class="com.walmart.walmartburpproxy.actions.SetProxyAction"
+                    text="Set Global Proxy"
+                    description="Automatically sets the Burp Suite proxy for the Android emulator">
+            </action>
+
+            <action id="com.walmart.walmartburpproxy.actions.RemoveProxyAction"
+                    class="com.walmart.walmartburpproxy.actions.RemoveProxyAction"
+                    text="Remove Global Proxy"
+                    description="Removes the global proxy setting from the Android emulator">
+            </action>
+        </group>
+    </actions>
+</idea-plugin>
