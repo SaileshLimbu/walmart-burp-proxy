@@ -17,13 +17,20 @@
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.plugins.terminal</depends>
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="Code Coverage" displayType="BALLOON" />
+        <toolWindow id="Jococo Logs"
+                    factoryClass="com.walmart.walmartburpproxy.toolview.LogToolWindowFactory"
+                    anchor="bottom"
+                    secondary="false"/>
     </extensions>
 
     <actions>
+
         <group id="com.walmart.walmartautoproxyconfig.ProxyActionGroup"
                text="Walmart Burp Proxy"
                description="Burp Proxy Configuration Tools"
@@ -43,5 +50,11 @@
                     description="Removes the global proxy setting from the Android emulator">
             </action>
         </group>
+        <action id="com.walmart.walmartburpproxy.actions.RunCoverageAction"
+                class="com.walmart.walmartburpproxy.actions.RunCoverageAction"
+                text="Run Module Code Coverage"
+                description="Run JaCoCo code coverage for this module">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
     </actions>
 </idea-plugin>

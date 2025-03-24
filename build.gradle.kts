@@ -14,10 +14,10 @@ repositories {
 // Configure Gradle IntelliJ Plugin
 // Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
 intellij {
-    version.set("2023.2.6")
-    type.set("IC") // Target IDE Platform
+    version.set("IU-241.19416.15")
+    type.set("IU-241.19416.15")
 
-    plugins.set(listOf(/* Plugin Dependencies */))
+    plugins.set(listOf("terminal"))
 }
 
 tasks {
@@ -31,17 +31,7 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("232")
+        sinceBuild.set("233")
         untilBuild.set("242.*")
-    }
-
-    signPlugin {
-        certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-        privateKey.set(System.getenv("PRIVATE_KEY"))
-        password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
-    }
-
-    publishPlugin {
-        token.set(System.getenv("PUBLISH_TOKEN"))
     }
 }
